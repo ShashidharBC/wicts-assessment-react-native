@@ -10,27 +10,60 @@ import {
 
 import {WELCOME_1} from '../../../../public/images/index';
 
-import Icon from 'react-native-vector-icons/MaterialIcons';
+import Icon, {Icons} from '../../../utils/icons';
+import {appColors} from '../../../utils/appColors';
+import {ScreenWidth} from 'react-native-elements/dist/helpers';
 
 const Header = () => {
   return (
     <View style={styles.container}>
       <TouchableOpacity style={styles.backButton}>
-        <Icon name="arrow-back" size={24} color="#000" />
+        <Icon
+          name={'arrow-back'}
+          type={Icons?.MaterialIcons}
+          color={appColors?.black}
+          // style={{paddingLeft: 8}}
+        />
       </TouchableOpacity>
-      <Text style={styles.title}>Foods</Text>
-      <View style={styles.deliveryContainer}>
-        <Icon name="location-on" size={20} color="#3B82F6" />
-        <Text style={styles.deliveryText}>Court More, Burnpur</Text>
+      <View
+        style={{
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+        }}>
+        <View style={{flexDirection: 'column', alignItems: 'flex-start'}}>
+          <Text style={styles.title}>Foods</Text>
+          <Text style={styles.subTitle}>Deliver at</Text>
+
+          <View style={styles.deliveryContainer}>
+            <Icon
+              name={'send'}
+              type={Icons?.Ionicons}
+              color={appColors?.primary}
+              // style={{paddingLeft: 8}}
+            />
+            <Text style={styles.deliveryText}>Court More, Burnpur</Text>
+          </View>
+        </View>
+        <Image source={WELCOME_1} style={styles.foodImage} />
       </View>
-      <Image source={WELCOME_1} style={styles.foodImage} />
       <View style={styles.searchContainer}>
-        <Icon name="search" size={24} color="#F97316" />
+        <Icon
+          name={'search'}
+          type={Icons?.MaterialIcons}
+          color={appColors?.redOrange}
+          // style={{paddingLeft: 8}}
+        />
         <TextInput
           style={styles.searchInput}
           placeholder='Search for "biriyani"'
         />
-        <Icon name="mic" size={24} color="#F97316" style={styles.micIcon} />
+        <Icon
+          name={'mic'}
+          type={Icons?.MaterialIcons}
+          color={appColors?.redOrange}
+          // style={{paddingLeft: 8}}
+        />
       </View>
     </View>
   );
@@ -42,15 +75,20 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   backButton: {
-    position: 'absolute',
-    top: 16,
-    left: 16,
+    marginBottom: 28,
   },
   title: {
-    fontSize: 24,
+    fontSize: 26,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    color: 'black',
+  },
+  subTitle: {
+    fontSize: 16,
     fontWeight: 'bold',
     textAlign: 'center',
     marginVertical: 16,
+    color: appColors?.gray,
   },
   deliveryContainer: {
     flexDirection: 'row',
@@ -64,9 +102,10 @@ const styles = StyleSheet.create({
   },
   foodImage: {
     width: 100,
-    height: 100,
+    height: 114,
     alignSelf: 'center',
     marginVertical: 16,
+    resizeMode: 'contain',
   },
   searchContainer: {
     flexDirection: 'row',
@@ -77,6 +116,7 @@ const styles = StyleSheet.create({
     paddingVertical: 4,
   },
   searchInput: {
+    height: ScreenWidth / 10,
     flex: 1,
     marginLeft: 8,
   },
