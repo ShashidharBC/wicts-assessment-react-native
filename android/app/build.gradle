@@ -84,6 +84,12 @@ android {
         versionName "1.0"
     }
     signingConfigs {
+        release {
+            storeFile file('wicts.keystore')
+            storePassword 'android'
+            keyAlias 'wicts-assignment'
+            keyPassword 'android'
+        }
         debug {
             storeFile file('debug.keystore')
             storePassword 'android'
